@@ -1,0 +1,19 @@
+<nav class="navbar">
+  <div class="navbar-left">
+    <a (click)="goToDashboard()">Accueil</a>
+    <a (click)="goToProfile()">Profil</a>
+  </div>
+  <div class="navbar-right ms-auto">
+    <div class="dropdown">
+      <button class="btn dropdown-button dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Compte
+      </button>
+
+      <ul class="dropdown-menu dropdown-menu-end">
+        <li><a class="dropdown-item" (click)="goToProfile()">Profil</a></li>
+        <li><a class="dropdown-item" (click)="logout()">Se déconnecter</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<router-outlet></router-outlet>
