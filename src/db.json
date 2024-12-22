@@ -1,0 +1,67 @@
+{
+  "signupUsersList": [
+    {
+      "name": "Jass",
+      "email": "jass@gmail.com",
+      "password": "123456",
+      "id": "7158"
+    },
+    {
+      "id": "d9c2",
+      "name": "Amira",
+      "email": "amira@gmail.com",
+      "password": "123456"
+    },
+    {
+      "id": "fb0b",
+      "email": "",
+      "password": ""
+    },
+    {
+      "id": "d734",
+      "email": "",
+      "password": ""
+    },
+    {
+      "id": "d457",
+      "email": "yass@yopmail.com",
+      "password": "123456"
+    },
+    {
+      "id": "1350",
+      "email": "yass@yopmail.com",
+      "password": "1253456",
+      "name": "yasmine"
+    },
+    {
+      "id": "0e72",
+      "email": "super@gmail.com",
+      "password": "123456",
+      "name": "superadmin"
+    },
+    {
+      "id": "2a07",
+      "email": "",
+      "password": "",
+      "name": ""
+    },
+    {
+      "id": "b1d7",
+      "email": "",
+      "password": "",
+      "name": ""
+    },
+    {
+      "id": "421f",
+      "email": "email@yopmail.com",
+      "password": "123456",
+      "name": "superadmin"
+    },
+    {
+      "id": "6685",
+      "email": "jasmen@yopmail.com",
+      "password": "123456",
+      "name": "yasmine"
+    }
+  ]
+}

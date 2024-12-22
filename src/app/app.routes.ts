@@ -4,6 +4,7 @@ import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { authGuard } from './guards/auth.guard';
+import { SingUpComponent } from './components/sing-up/sing-up.component';
 
 export const routes: Routes = [
   {
@@ -15,6 +16,13 @@ export const routes: Routes = [
     path: 'login',
     component: LoginComponent,
   },
+  
+
+  {
+    path: 'sing-up',
+    component: SingUpComponent,
+  },
+  
   {
     path: '',
     component: NavbarComponent,  
