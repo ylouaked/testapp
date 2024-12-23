@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core'; 
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, CommonModule,RouterLink],
+  imports: [ReactiveFormsModule, CommonModule, RouterLink],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
@@ -24,32 +24,72 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  /*onSubmit(): void {
-    this.message = null; 
+  /*login(): void {
     const { email, password } = this.loginForm.value;
-    const user = this.users.find(u => u.email === email && u.password === password);
-  if (user) {
-    this.authService.login(user); 
-    this.router.navigate(['/dashboard']);
-  } else {
-    this.message = 'Email ou mot de passe incorrect.';
+    this.message = null;
+
+    
+    this.http.get<any[]>(`http://localhost:3000/signupUsersList?email=${email}&password=${password}`).subscribe(
+      (users) => {
+        if (users.length > 0) {
+          this.router.navigate(["/dashboard"]);
+        } else {
+          this.message = 'Email ou mot de passe incorrect.';
+        }
+      },
+      () => {
+        this.message = "Une erreur est survenue lors de la connexion.";
+      }
+    );
   }
 }
+
+/*onSubmit(): void {
+
+    this.message = null; 
+
+    const { email, password } = this.loginForm.value;
+
+    const user = this.users.find(u => u.email === email && u.password === password);
+
+  if (user) {
+
+    this.authService.login(user); 
+
+    this.router.navigate(['/dashboard']);
+
+  } else {
+
+    this.message = 'Email ou mot de passe incorrect.';
+
+  }
+
 }
+
+}
+
 */
-login() : void {
+
+
+login(): void {
   const { email, password } = this.loginForm.value;
-  this.message = null; 
-  
-  this.http.get<any[]>(`http://localhost:3000/signupUsersList?email=${email}&password=${password}`).subscribe(
+  this.message = null;
+
+  this.authService.login(email, password).subscribe(
     (users) => {
       if (users.length > 0) {
-        this.router.navigate(["/dashboard"]); 
+        
+         const token = btoa(`${email}:${password}`); //const token = http://localhost:3000/signupUsersList
+        localStorage.setItem('jwt', token);
+        localStorage.setItem('currentUser', JSON.stringify(users[0]));
+        this.router.navigate(['/dashboard']);
       } else {
         this.message = 'Email ou mot de passe incorrect.';
       }
     },
+    () => {
+      this.message = "Identifiant incorrect.";
+    }
   );
 }
-
 }

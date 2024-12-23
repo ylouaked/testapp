@@ -5,7 +5,7 @@ import { NavbarComponent } from '../navbar/navbar.component';
 import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-dashboard',
-  imports: [CommonModule,NavbarComponent],
+  imports: [CommonModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })

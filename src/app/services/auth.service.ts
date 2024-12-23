@@ -1,56 +1,51 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { Observable } from 'rxjs';
+
+interface User {
+  email: string;
+  password: string;
+  name: string;
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private currentUser: any = null;
+  private jwtHelper = new JwtHelperService();
+  private apiUrl = 'http://localhost:3000/signupUsersList'; 
 
-  constructor(private router: Router) {}
+  constructor(private http: HttpClient) {}
 
+  
+  signUp(user: User): Observable<any> {
+    return this.http.post<any>(this.apiUrl, user);
+  }
 
-  private memoryStorage: { [key: string]: string } = {};
+  
+  login(email: string, password: string): Observable<any> {
+    return this.http.get<any[]>(`${this.apiUrl}?email=${email}&password=${password}`);
+  }
 
+  isAuthenticated(): boolean {
+    const token = this.getToken();
+    return token ? !this.jwtHelper.isTokenExpired(token) : false;
+  }
 
-  login(user: any): void {
-    this.currentUser = user;
-    localStorage.setItem('currentUser', JSON.stringify(user));
+  
+  getToken(): string | null {
+    return localStorage.getItem('jwt');
+  }
+
+  
+  getCurrentUser(): any {
+    const user = localStorage.getItem('currentUser');
+    return user ? JSON.parse(user) : null;
   }
 
   logout(): void {
-    this.currentUser = null;
-    localStorage.removeItem('currentUser');
-    this.router.navigate(['/login']);
+    localStorage.removeItem('jwt'); 
+    localStorage.removeItem('currentUser'); 
   }
-
-  getCurrentUser(): any {
-    if (!this.currentUser) {
-      this.currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
-    }
-    return this.currentUser;
-  }
-
-  isLoggedIn(): boolean {
-    return this.getCurrentUser() !== null;
-  }
-
-  //avec JWT 
-  //loginJwt(user: any): Observable<any> {
-    //return this.http.post<any>('https://api/auth/login', user);   }
-
- // logout(): void {
-   // this.currentUser = null;
-   // localStorage.removeItem('currentUser');
-   // sessionStorage.removeItem('jwtToken'); 
-   // this.router.navigate(['/login']);}
-
-
-
-
-  /// isLoggedIn(): boolean {
-    //return this.getCurrentUser() !== null || this.getJwtToken() !== null; }
-
-
-
 }

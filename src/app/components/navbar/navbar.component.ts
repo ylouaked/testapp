@@ -16,9 +16,10 @@ export class NavbarComponent {
   
     dropdownOpen = false;
 
-  logout(): void {
-    this.authService.logout();
-  }
+    logout(): void {
+      this.authService.logout();
+      this.router.navigate(['/login']);
+    }
 
   goToProfile(): void {
     this.router.navigate(['/profile']);  

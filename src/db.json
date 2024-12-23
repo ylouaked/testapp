@@ -62,6 +62,24 @@
       "email": "jasmen@yopmail.com",
       "password": "123456",
       "name": "yasmine"
+    },
+    {
+      "id": "80ed",
+      "email": "tst@yopmail.com",
+      "password": "123456",
+      "name": "tst"
+    },
+    {
+      "id": "becf",
+      "email": "chaima@gmail.com",
+      "password": "123456",
+      "name": "Chaima"
+    },
+    {
+      "id": "3581",
+      "email": "aaa@yopmail.com",
+      "password": "1234567",
+      "name": "aaa"
     }
   ]
 }

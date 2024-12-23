@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-sing-up',
@@ -13,13 +14,13 @@ import { HttpClient } from '@angular/common/http';
 export class SingUpComponent {
 
   public signUpForm !: FormGroup
-  constructor(private formBuilder: FormBuilder, private http: HttpClient, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private http: HttpClient, private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.signUpForm = this.formBuilder.group({
       email: ["",  [Validators.required, Validators.email]],
       password: ["", [Validators.required, Validators.minLength(6),]],
-      name:[""]
+      name:["", [Validators.required]]
     })
   }
 
@@ -44,13 +45,10 @@ export class SingUpComponent {
           
           this.http.post<any>("http://localhost:3000/signupUsersList", this.signUpForm.value).subscribe(
             () => {
-              alert("Inscription réussie. Veuillez vous connecter");
+            
               this.signUpForm.reset();
               this.router.navigate(["/login"]);
             },
-            (err) => {
-              alert("Something went wrong");
-            }
           );
         }
       },
