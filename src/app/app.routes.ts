@@ -4,7 +4,9 @@ import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { authGuard } from './guards/auth.guard';
-import { SingUpComponent } from './components/sing-up/sing-up.component';
+import { SingUpComponent } from './components/sign-up/sign-up.component';
+import { loginGuard } from './guards/login.guard';
+import { signupGuard } from './guards/signup.guard';
 
 export const routes: Routes = [
   {
@@ -15,12 +17,15 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    canActivate: [loginGuard],
+
   },
   
 
   {
-    path: 'sing-up',
+    path: 'sign-up',
     component: SingUpComponent,
+    canActivate: [signupGuard],
   },
   
   {

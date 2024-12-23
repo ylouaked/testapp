@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Router, RouterLink } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../services/auth.service';
+import { User } from '../../user';
 
 @Component({
   selector: 'app-login',
@@ -22,19 +23,26 @@ export class LoginComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
+  
   }
 
-  /*login(): void {
+  login(): void {
     const { email, password } = this.loginForm.value;
     this.message = null;
 
     
-    this.http.get<any[]>(`http://localhost:3000/signupUsersList?email=${email}&password=${password}`).subscribe(
-      (users) => {
-        if (users.length > 0) {
-          this.router.navigate(["/dashboard"]);
+    this.http.get<any>(`http://localhost:3000/signupUsersList?email=${email}&password=${password}`).subscribe(
+      (user) => {
+        if (user.length >0) {
+          console.log(user);
+           const token = generateJwtToken(user.email, user.password)
+           console.log("token " , token);          
+           localStorage.setItem('jwt', token); //pour stocker les val (clé,val)
+           localStorage.setItem('currentUser', JSON.stringify(user))
+
+          this.router.navigate(['/dashboard']);
         } else {
-          this.message = 'Email ou mot de passe incorrect.';
+          this.message = "Email ou mot de passe incorrect.";
         }
       },
       () => {
@@ -43,6 +51,37 @@ export class LoginComponent implements OnInit {
     );
   }
 }
+
+
+function generateJwtToken(email : string, password : string) {
+  
+  const secretKey = "my_secret_key";
+
+  
+  const header = {
+      alg: "HS256",
+      typ: "JWT"
+  };
+
+  
+  const payload = {
+      email,
+      password,
+      iat: Math.floor(Date.now() / 1000) // Issued at timestamp
+  };
+
+  
+  const base64Header = btoa(JSON.stringify(header));
+  const base64Payload = btoa(JSON.stringify(payload));
+
+ 
+  const signature = btoa(`${base64Header}.${base64Payload}.${secretKey}`);
+
+  
+  return `${base64Header}.${base64Payload}.${signature}`;
+}
+
+
 
 /*onSubmit(): void {
 
@@ -69,27 +108,3 @@ export class LoginComponent implements OnInit {
 }
 
 */
-
-
-login(): void {
-  const { email, password } = this.loginForm.value;
-  this.message = null;
-
-  this.authService.login(email, password).subscribe(
-    (users) => {
-      if (users.length > 0) {
-        
-         const token = btoa(`${email}:${password}`); //const token = http://localhost:3000/signupUsersList
-        localStorage.setItem('jwt', token);
-        localStorage.setItem('currentUser', JSON.stringify(users[0]));
-        this.router.navigate(['/dashboard']);
-      } else {
-        this.message = 'Email ou mot de passe incorrect.';
-      }
-    },
-    () => {
-      this.message = "Identifiant incorrect.";
-    }
-  );
-}
-}

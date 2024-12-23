@@ -14,16 +14,14 @@ interface User {
 })
 export class AuthService {
   private jwtHelper = new JwtHelperService();
-  private apiUrl = 'http://localhost:3000/signupUsersList'; 
+  private apiUrl = 'http://localhost:3000/signupUsersList';
 
   constructor(private http: HttpClient) {}
 
-  
   signUp(user: User): Observable<any> {
     return this.http.post<any>(this.apiUrl, user);
   }
 
-  
   login(email: string, password: string): Observable<any> {
     return this.http.get<any[]>(`${this.apiUrl}?email=${email}&password=${password}`);
   }
@@ -33,19 +31,29 @@ export class AuthService {
     return token ? !this.jwtHelper.isTokenExpired(token) : false;
   }
 
-  
   getToken(): string | null {
-    return localStorage.getItem('jwt');
+    if (this.isLocalStorageAvailable()) {
+      return localStorage.getItem('jwt');
+    }
+    return null;
   }
 
-  
   getCurrentUser(): any {
-    const user = localStorage.getItem('currentUser');
-    return user ? JSON.parse(user) : null;
+    if (this.isLocalStorageAvailable()) {
+      const user = localStorage.getItem('currentUser');
+      return user ? JSON.parse(user) : null;
+    }
+    return null;
   }
 
   logout(): void {
-    localStorage.removeItem('jwt'); 
-    localStorage.removeItem('currentUser'); 
+    if (this.isLocalStorageAvailable()) {
+      localStorage.removeItem('jwt');
+      localStorage.removeItem('currentUser');
+    }
+  }
+
+  private isLocalStorageAvailable(): boolean {
+    return typeof localStorage !== 'undefined';
   }
 }

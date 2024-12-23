@@ -1,8 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { NavbarComponent } from '../navbar/navbar.component';
+import { AfterContentInit, AfterViewInit, Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { User } from '../../user';
 @Component({
   selector: 'app-dashboard',
   imports: [CommonModule],
@@ -11,13 +10,17 @@ import { AuthService } from '../../services/auth.service';
 })
 
 
-export class DashboardComponent implements OnInit {
-  currentUser: any = null;
+export class DashboardComponent implements OnInit  {
+  currentUser: any | null = null;
+
+  userEmail : string = "" ;
 
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
     this.currentUser = this.authService.getCurrentUser();
+    console.log(this.currentUser[0]);
+    
   }
-  
+
 }
