@@ -1,8 +1,12 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, ɵnormalizeQueryParams } from '@angular/common';
 import { AfterContentInit, AfterViewInit, Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { User } from '../../user';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '../../store';
+import { StoreService } from '../../services/store.service';
+import { Transaction } from '../../transaction';
+import { error } from 'console';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,29 +16,73 @@ import { Router } from '@angular/router';
 })
 
 
-export class DashboardComponent implements OnInit  {
+export class DashboardComponent implements OnInit {
   currentUser: any | null = null;
+  transactions: Transaction[] = [];
+  userEmail: string = "";
+  StoreName: String = '';
+  stores: Store[] = [];
+  StoreId: number = 0 ;
 
-  userEmail : string = "" ;
-
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router, private storeService: StoreService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.currentUser = this.authService.getCurrentUser();
-    console.log(this.currentUser[0]);}
 
-    stores = [
-      { name: 'Condor Alger', id: 1 },
-      { name: 'Condor Oran', id: 2 },
-      { name: 'Condor Annaba', id: 3 }
-    ];
 
-    
-    navigateToStore(storeName: string): void {
-      this.router.navigate([`/store/${storeName}`]);
-    }
-    
-    
-  
+    this.storeService.getAllStores().subscribe(
+      (stores) => {
+        this.stores = stores;
+      }
+    );
+
+  }
+
+  navigateToStore(storeId: number): void {
+    this.router.navigate(['/store',storeId]);
+  }
+
+
 
 }
+
+
+
+
+
+
+
+/* stores : Store[]=[     {
+      "id":1,   
+      "name": "Condor Alger",
+      "transactions":[
+          {
+          "montant":50,
+          "label":"",
+
+          },
+          {
+            "montant":30,
+              "label":"",
+          }
+      ]
+      
+  } ,
+  {
+    "id":3,   
+    "name": "Condor safsafsaf ",
+    "transactions":[
+        {
+        "montant":50,
+        "label":"",
+
+        },
+        {
+          "montant":30,
+            "label":"",
+        }
+    ]
+
+}];*/
+
+

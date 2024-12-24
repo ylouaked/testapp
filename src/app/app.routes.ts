@@ -26,10 +26,10 @@ export const routes: Routes = [
   {
     path: 'sign-up',
     component: SingUpComponent,
-    canActivate: [signupGuard],
+    canActivate: [loginGuard],
   },
 
-  { path: 'store/:storeName',
+  { path: 'store/:id',
      component: StoreComponent },
   
   {

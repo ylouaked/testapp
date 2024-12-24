@@ -23,17 +23,6 @@ export class SingUpComponent {
     })
   }
 
- /* signUp(){
-    this.http.post<any>("http://localhost:3000/signupUsersList",this.signUpForm.value)
-    .subscribe(res=>{
-      alert('SIGNIN SUCCESFUL');
-      this.signUpForm.reset()
-      this.router.navigate(["login"])
-    },err=>{
-      alert("Something went wrong")
-    })
-  }*/
-
 
   signUp() {
     const { email } = this.signUpForm.value;

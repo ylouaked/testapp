@@ -1,2 +1,27 @@
 <app-navbar></app-navbar>
-<p>store works!</p>
+@if(store)
+{
+<h2>Transactions pour le magasin  : {{store.name}}</h2>}
+<table>
+    <thead>
+        <tr>
+            <th>N° </th>
+            <th>Libellé </th>
+            <th>Montant</th>
+            <th>Date</th>            
+        </tr>
+    </thead>
+
+    <tbody>
+        @for ( transaction of transactions; track store.transaction)
+        {
+        <tr >
+            <td>{{transaction.id}}</td>
+            <td>{{transaction.label}}</td>
+            <td>{{transaction.montant}}</td>
+            <td>{{transaction.date}}</td>
+        </tr>
+    }
+    </tbody>
+</table>
+

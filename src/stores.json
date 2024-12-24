@@ -1,0 +1,79 @@
+{
+    "stores": [
+      {
+        "id":"1",
+        "name": "Condor Alger",
+        "transactions":[
+            {
+            "id":"1",
+            "libelle":"A",
+            "montant":"100",
+            "date":"15/05/2024"
+
+            },
+            {
+                "id":"2",
+                "libelle":"B",
+                "montant":"12580",
+                "date":"20/12/2024"
+    
+            }
+        ]
+    },
+
+      {
+        "id":"2",
+        "name": "Condor Annaba",
+        "transaction":[
+            {
+             "id":"1",
+             "libelle":"a",
+             "montant":"58600",
+             "date":"15/06/2024"
+
+            },
+            {
+                "id":"2",
+                "libelle":"achat",
+                "montant":"30241",
+                "date":"17/12/2022"
+    
+            },
+
+            {
+                 "id":"3",
+                 "libelle":"xxx",
+                 "montant":"82301",
+                 "date":"18/02/2024"
+        
+            }
+
+        ]
+      },
+
+
+      {
+        "id":"3",
+        "name": "Condor Oran",
+        "transaction":[
+            {
+            "id":"1",
+            "libelle":"xwy",
+            "montant":"30000",
+            "date":"15/08/2024"
+
+            },
+
+            {
+                "id":"2",
+                "libelle":"azerty",
+                "montant":"9000",
+                "date":"10/12/2024"
+    
+            }
+        ]
+      }
+
+    ]
+
+}
