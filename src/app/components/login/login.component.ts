@@ -83,28 +83,3 @@ function generateJwtToken(email : string, password : string) {
 
 
 
-/*onSubmit(): void {
-
-    this.message = null; 
-
-    const { email, password } = this.loginForm.value;
-
-    const user = this.users.find(u => u.email === email && u.password === password);
-
-  if (user) {
-
-    this.authService.login(user); 
-
-    this.router.navigate(['/dashboard']);
-
-  } else {
-
-    this.message = 'Email ou mot de passe incorrect.';
-
-  }
-
-}
-
-}
-
-*/

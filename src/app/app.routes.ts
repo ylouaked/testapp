@@ -7,6 +7,7 @@ import { authGuard } from './guards/auth.guard';
 import { SingUpComponent } from './components/sign-up/sign-up.component';
 import { loginGuard } from './guards/login.guard';
 import { signupGuard } from './guards/signup.guard';
+import { StoreComponent } from './components/store/store.component';
 
 export const routes: Routes = [
   {
@@ -27,6 +28,9 @@ export const routes: Routes = [
     component: SingUpComponent,
     canActivate: [signupGuard],
   },
+
+  { path: 'store/:storeName',
+     component: StoreComponent },
   
   {
     path: '',

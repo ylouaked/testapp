@@ -1,18 +1,14 @@
-import { CanActivateFn } from '@angular/router';
+import { inject } from '@angular/core';
+import { CanActivateFn, Router } from '@angular/router';
 
 export const signupGuard: CanActivateFn = (route, state) => {
-  const currentUser = localStorage.getItem('currentUser');
+  
+  const router = inject(Router);
 
-  if (currentUser) {
-   
-    
-    window.location.href = '/dashboard'; 
+  if (typeof window !== 'undefined' && localStorage.getItem('currentUser')) {
+    router.navigate(['/dashboard']); 
     return false; 
   }
-
- 
-  
   return true;
-  
   
 };

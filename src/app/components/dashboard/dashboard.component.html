@@ -1,9 +1,9 @@
-
-
-<div class="dashboard-container">
-  <div class="welcome-message" *ngIf="currentUser">
-    <h2>Bonjour {{ currentUser[0].name }} !</h2>
-    <p>Vous êtes bien connecté.</p>
-  </div>
-
+<div class="dashboard">
+  <h2>Vos magasins: </h2>
+  <ul>
+    <li *ngFor="let store of stores" (click)="navigateToStore(store.name)">
+      {{ store.name }}
+    
+</li>
+  </ul>
 </div>
