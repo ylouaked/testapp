@@ -1,9 +1,11 @@
+import { DatePipe } from "./pipes/date.pipe";
+
 export interface Transaction {
 
 
     id: number;
     montant: number;
-    label: string;
+    libelle: string;
     date?: Date;
 
     

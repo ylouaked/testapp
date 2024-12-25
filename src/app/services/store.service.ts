@@ -22,8 +22,8 @@ export class StoreService {
     return this.http.get<Store[]>(`${this.apiUrl}`);
   }
 
-  ge(): Observable<Transaction[]> {
-    return this.http.get<Transaction[]>(`${this.apiUrl}`);
+  getTransactionById(id: number ): Observable<Transaction> {
+    return this.http.get<Transaction>(`${this.apiUrl}/${id}`);
   }
   
 }

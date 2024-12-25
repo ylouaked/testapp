@@ -1,27 +1,31 @@
 <app-navbar></app-navbar>
+
 @if(store)
 {
-<h2>Transactions pour le magasin  : {{store.name}}</h2>}
-<table>
+<h2>Transactions pour le magasin  : {{store.name}}</h2>
+
+}
+<div class="table-container">
+<table class="custom-table">
     <thead>
         <tr>
             <th>N° </th>
             <th>Libellé </th>
-            <th>Montant</th>
+            <th>Montant  (Dzd)</th>
             <th>Date</th>            
         </tr>
     </thead>
 
-    <tbody>
-        @for ( transaction of transactions; track store.transaction)
-        {
-        <tr >
-            <td>{{transaction.id}}</td>
-            <td>{{transaction.label}}</td>
-            <td>{{transaction.montant}}</td>
-            <td>{{transaction.date}}</td>
+   <tbody>
+    @for (transaction of transaction; track transaction.id)
+      {
+        <tr>
+          <td>{{transaction.id}}</td>
+          <td>{{transaction.libelle}}</td>
+          <td>{{transaction.montant | number:'1.0-0' }}</td>
+          <td>{{transaction.date}} <!--| date | date: 'dd/MM/yyyy'-->  </td>
         </tr>
-    }
-    </tbody>
+       }
+  </tbody>
 </table>
-
+</div>

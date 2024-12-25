@@ -31,17 +31,18 @@ export class DashboardComponent implements OnInit {
 
 
     this.storeService.getAllStores().subscribe(
-      (stores) => {
+      (stores : Store[]) => {
         this.stores = stores;
+        console.log('Stores:', this.stores);
       }
     );
+
 
   }
 
   navigateToStore(storeId: number): void {
-    this.router.navigate(['/store',storeId]);
+    this.router.navigate(['/dashboard/store', storeId]);
   }
-
 
 
 }

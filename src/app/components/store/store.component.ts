@@ -4,14 +4,18 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '../../store';
 import { StoreService } from '../../services/store.service';
 import { Transaction } from '../../transaction';
+import { CommonModule } from '@angular/common';
+import { DatePipe } from '../../pipes/date.pipe';
 
 @Component({
   selector: 'app-store',
-  imports: [NavbarComponent],
+  imports: [NavbarComponent,CommonModule],
   templateUrl: './store.component.html',
-  styleUrl: './store.component.css'
+  styleUrl: './store.component.css',
+  providers: [DatePipe]  
 })
 export class StoreComponent {
+
   transaction: Transaction[] = [];
   storeID: number = 0;
   store?: Store | undefined = undefined;
@@ -22,11 +26,27 @@ export class StoreComponent {
 
   ngOnInit() {
 
-    this.storeID = Number(this.route.snapshot.paramMap.get('id'));
-    this.storeService.getstoreById(this.storeID).subscribe(store => { this.store = store; console.log(this.store);
-     })
+  this.route.params.subscribe(params => {
+  this.storeID = params['id'];
+  this.loadStoreData();
+});
+}
 
+loadStoreData(): void {
+  this.storeService.getstoreById(this.storeID).subscribe(store => {
+    this.store = store;  
+    console.log(this.store);
 
-  }
+    if (this.store && this.store.transactions) {
+      this.transaction = this.store.transactions; 
+      
+
+      console.log('Transactions:', this.transaction); 
+      
+    } 
+    
+  });
+}
+
 
 }

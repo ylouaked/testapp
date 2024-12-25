@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     this.message = null;
 
     
-    this.http.get<any>(`http://localhost:3000/signupUsersList?email=${email}&password=${password}`).subscribe(
+    this.http.get<any>(`http://localhost:3001/signupUsersList?email=${email}&password=${password}`).subscribe(
       (user) => {
         if (user.length >0) {
           console.log(user);

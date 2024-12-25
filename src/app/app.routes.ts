@@ -29,8 +29,9 @@ export const routes: Routes = [
     canActivate: [loginGuard],
   },
 
-  { path: 'store/:id',
+  { path: 'dashboard/store/:id',
      component: StoreComponent },
+
   
   {
     path: '',
