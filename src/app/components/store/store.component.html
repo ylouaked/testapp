@@ -1,10 +1,9 @@
 <app-navbar></app-navbar>
-
 @if(store)
 {
-<h2>Transactions pour le magasin  : {{store.name}}</h2>
+<h2>Transactions pour le magasin  : {{store.name}}</h2>}
 
-}
+
 <div class="table-container">
 <table class="custom-table">
     <thead>
@@ -17,9 +16,10 @@
     </thead>
 
    <tbody>
-    @for (transaction of transaction; track transaction.id)
+    @for (transaction of transactions| paginate : {itemsPerPage: itemsPerPage, currentPage: p 
+    }; track transaction.id;)
       {
-        <tr>
+        <tr (click)="viewTransactionDetails(transaction.id)">
           <td>{{transaction.id}}</td>
           <td>{{transaction.libelle}}</td>
           <td>{{transaction.montant | number:'1.0-0' }}</td>
@@ -28,4 +28,11 @@
        }
   </tbody>
 </table>
+<pagination-controls 
+class="pagination-controls" 
+previousLabel="Précédent" 
+nextLabel="Suivant"
+(pageChange)="onPageChange($event)"  >
+</pagination-controls>
+
 </div>

@@ -44,6 +44,8 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['/dashboard/store', storeId]);
   }
 
+  
+
 
 }
 

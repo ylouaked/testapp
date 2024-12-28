@@ -6,8 +6,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { authGuard } from './guards/auth.guard';
 import { SingUpComponent } from './components/sign-up/sign-up.component';
 import { loginGuard } from './guards/login.guard';
-import { signupGuard } from './guards/signup.guard';
 import { StoreComponent } from './components/store/store.component';
+import { TransactionComponent } from './components/transaction/transaction.component';
 
 export const routes: Routes = [
   {
@@ -30,9 +30,13 @@ export const routes: Routes = [
   },
 
   { path: 'dashboard/store/:id',
-     component: StoreComponent },
+     component: StoreComponent 
+    },
 
-  
+    {
+      path: 'dashboard/store/:storeId/transaction/:transactionId',
+      component: TransactionComponent, 
+    },
   {
     path: '',
     component: NavbarComponent,  

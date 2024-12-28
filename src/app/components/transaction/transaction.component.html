@@ -1,0 +1,11 @@
+<app-navbar></app-navbar>
+
+<h2>Détails de la transaction</h2>
+@if(transaction){
+<div >
+  <p><strong>N°:</strong> {{ transaction.id }}</p>
+  <p><strong>Libellé:</strong> {{ transaction.libelle }}</p>
+  <p><strong>Montant :</strong> {{ transaction.montant | number:'1.0-0'}} DZD</p>
+  <p><strong>Date:</strong> {{ transaction.date }}</p>
+</div>
+}

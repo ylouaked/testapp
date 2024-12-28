@@ -38,3 +38,23 @@
     background-color: #cde4fe60;  
   }
   
+  .pagination-controls {
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .pagination-controls a {
+    color: #007bff;
+    margin: 0 5px;
+    text-decoration: none;
+  }
+  
+  .pagination-controls a.active {
+    font-weight: bold;
+    text-decoration: underline;
+  }
+  
+  .pagination-controls a:hover {
+    text-decoration: underline;
+  }
+  

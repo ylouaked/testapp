@@ -12,18 +12,26 @@ export class StoreService {
 
   constructor(private http: HttpClient) { }
 
-  getstoreById(id: number): Observable<Store> {
-    return this.http.get<Store>(`${this.apiUrl}/${id}`);
-  }
 
 
-  
   getAllStores(): Observable<Store[]> {
-    return this.http.get<Store[]>(`${this.apiUrl}`);
-  }
-
-  getTransactionById(id: number ): Observable<Transaction> {
-    return this.http.get<Transaction>(`${this.apiUrl}/${id}`);
+    return this.http.get<Store[]>(this.apiUrl);
   }
   
+  getstoreById(storeId: number): Observable<Store> {
+    console.log(`Store ID : ${storeId}`);
+    return this.http.get<Store>(`${this.apiUrl}/${storeId}`);
+  }
+
+  getTransactionById(storeId: number, transactionId: number): Observable<Transaction> {
+  return this.http.get<Transaction>(`${this.apiUrl}/${storeId}/transactions/${transactionId}`);
+}
+getTransactions(storeId: number, page: number, itemsPerPage: number): Observable<{ transactions: Transaction[], totalItems: number }> {
+  return this.http.get<{ transactions: Transaction[], totalItems: number }>(`${this.apiUrl}/${storeId}/transactions`, {
+    params: {
+      _page: page.toString(),
+      _limit: itemsPerPage.toString(),
+    }
+  });
+}
 }
