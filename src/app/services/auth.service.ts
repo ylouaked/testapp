@@ -14,7 +14,7 @@ interface User {
 })
 export class AuthService {
   private jwtHelper = new JwtHelperService();
-  private apiUrl = 'http://localhost:3000/signupUsersList';
+  private apiUrl = 'http://localhost:3001/signupUsersList';
 
   constructor(private http: HttpClient) {}
 
@@ -45,7 +45,10 @@ export class AuthService {
     }
     return null;
   }
-
+  getCurrentUserName(): string | null {
+    const user = this.getCurrentUser();
+    return user ? user.name : null;
+  }
   logout(): void {
     if (this.isLocalStorageAvailable()) {
       localStorage.removeItem('jwt');

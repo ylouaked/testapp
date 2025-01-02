@@ -1,7 +1,21 @@
 <app-navbar></app-navbar>
+<div class="store">
 @if(store)
 {
 <h2>Transactions pour le magasin  : {{store.name}}</h2>}
+
+<div class="search-container">
+  <input 
+    class="search-bar"
+    type="text" 
+    [(ngModel)]="searchTerm" 
+    placeholder="Rechercher une transaction..." 
+    (input)="applySearch()" 
+  />
+  <span class="search-icon">
+    <i class="fa fa-search"></i>  <!-- Icône loupe -->
+  </span>
+</div>
 
 
 <div class="table-container">
@@ -16,7 +30,7 @@
     </thead>
 
    <tbody>
-    @for (transaction of transactions| paginate : {itemsPerPage: itemsPerPage, currentPage: p 
+    @for (transaction of filteredTransactions| paginate : {itemsPerPage: itemsPerPage, currentPage: p 
     }; track transaction.id;)
       {
         <tr (click)="viewTransactionDetails(transaction.id)">
@@ -35,4 +49,5 @@ nextLabel="Suivant"
 (pageChange)="onPageChange($event)"  >
 </pagination-controls>
 
+</div>
 </div>

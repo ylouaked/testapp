@@ -27,13 +27,13 @@ export class SingUpComponent {
   signUp() {
     const { email } = this.signUpForm.value;
 
-    this.http.get<any[]>(`http://localhost:3000/signupUsersList?email=${email}`).subscribe(
+    this.http.get<any[]>(`http://localhost:3001/signupUsersList?email=${email}`).subscribe(
       (users) => {
         if (users.length > 0) {
           alert("Cet email existe déjà. Veuillez utiliser un autre email.");
         } else {
           
-          this.http.post<any>("http://localhost:3000/signupUsersList", this.signUpForm.value).subscribe(
+          this.http.post<any>("http://localhost:3001/signupUsersList", this.signUpForm.value).subscribe(
             (res) => {
               this.signUpForm.reset();
               this.router.navigate(["/login"]);
