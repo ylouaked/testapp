@@ -8,9 +8,10 @@ import { CommonModule } from '@angular/common';
 import { DatePipe } from '../../pipes/date.pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-store',
-  imports: [NavbarComponent,CommonModule,NgxPaginationModule,FormsModule],
+  imports: [NavbarComponent,CommonModule,NgxPaginationModule,FormsModule,MatIconModule],
   templateUrl: './store.component.html',
   styleUrl: './store.component.css',
   providers: [DatePipe]  

@@ -42,7 +42,8 @@
   
   
   .custom-table tbody tr:hover {
-    background-color: #cde4fe60;  
+    background-color: #cde4fe60; 
+    cursor: pointer; 
   }
   
   .pagination-controls {
@@ -51,7 +52,7 @@
   }
   
   .pagination-controls a {
-    color: #007bff;
+    color: #002e5f;
     margin: 0 5px;
     text-decoration: none;
   }
@@ -64,34 +65,27 @@
   .pagination-controls a:hover {
     text-decoration: underline;
   }
-  /* Style du conteneur de la barre de recherche */
+  
 .search-container {
   display: flex;
-  justify-content: flex-end; /* Place la barre à droite */
-  margin-bottom: 15px; /* Espacement en bas */
+  justify-content: center; 
+  margin-bottom: 15px; 
 }
 
-/* Style de l'input de recherche */
+
 .search-bar {
-  padding: 8px 12px; /* Espacement interne */
-  font-size: 14px; /* Taille du texte */
-  border: 1px solid #ccc; /* Bordure grise */
-  border-radius: 4px; /* Bords arrondis */
-  outline: none; /* Supprime le contour bleu au focus */
-  width: 250px; /* Largeur de l'input */
+  padding: 8px 12px; 
+  font-size: 14px; 
+  border: 1px solid #ccc;
+  border-radius: 4px; 
+  outline: none; 
+  width: 250px; 
   transition: box-shadow 0.2s ease-in-out;
 }
 
-/* Focus sur l'input */
+
 .search-bar:focus {
-  border-color: #007bff; /* Bordure bleue */
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Effet lumineux */
+  border-color: #007bff; 
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); 
 }
 
-/* Ajout de styles pour les icônes de recherche */
-.search-icon {
-  margin-left: 8px; /* Espacement entre l'input et l'icône */
-  color: #555; /* Couleur grise pour l'icône */
-  font-size: 18px; /* Taille de l'icône */
-  cursor: pointer; /* Pointeur interactif */
-}

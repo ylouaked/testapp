@@ -1,18 +1,39 @@
 <nav class="navbar">
-  <div class="navbar-left">
-    <a (click)="goToDashboard()">Accueil</a>
-    <a (click)="goToProfile()">Profil</a>
-  </div>
+  <ul class="navbar-left">
+    <div class="logo">
+      <a (click)="goToDashboard()" class="navbar-logo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Condor_Electronics_Logo.svg/800px-Condor_Electronics_Logo.svg.png" alt="Condor Logo" />
+      </a>
+      </div>
+    <li>
+      <a [ngClass]="{'active': activeLink === 'dashboard'}" (click)="goToDashboard()">Accueil</a>
+    </li>
+    <li>
+      <a [ngClass]="{'active': activeLink === 'profile'}" (click)="goToProfile()">Profile</a>
+    
+    </li>
+    <!--<li>
+      <a [ngClass]="{'active': activeLink === 'profile'}" (click)="goToProfile()">Stores</a>
+    
+    </li>-->
+  </ul>
   <div class="navbar-right">
-    <button class="dropdown-toggle" (click)="toggleDropdown()">
-      <span>{{ currentUserName }}</span> 
+    <button [ngClass]="{'active': activeLink === 'compte'}"  (click)="toggleDropdown()" (click)="setActive('compte')" class="dropdown-toggle">
+      <mat-icon>account_circle</mat-icon>
+      <span>{{ currentUserName }}</span>
     </button>
     <ul [ngClass]="{'dropdown-menu': true, 'show': dropdownOpen}">
-      <li class="dropdown-item" (click)="goToProfile()">Informations du compte</li>
-      <li class="dropdown-item" (click)="logout()">Se déconnecter</li>
+      <li class="dropdown-item" (click)="goToProfile()">
+        <mat-icon>person</mat-icon> Informations du compte
+      </li>
+      <li class="dropdown-item" (click)="goToProfile()">
+        <mat-icon>password</mat-icon> Changer mot de passe
+      </li>
+      <li class="dropdown-item" (click)="logout()">
+        <mat-icon>logout</mat-icon> Se déconnecter
+      </li>
     </ul>
   </div>
 </nav>
-
 
 <router-outlet></router-outlet>

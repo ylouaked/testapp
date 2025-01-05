@@ -5,16 +5,19 @@ import { DashboardComponent } from '../dashboard/dashboard.component';
 import { Router, RouterOutlet } from '@angular/router';
 import { User } from '../../user';
 import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-navbar',
-  imports: [RouterOutlet,CommonModule],
+  imports: [RouterOutlet,CommonModule,MatIconModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
 
 export class NavbarComponent {
   currentUserName: string | null = null;
+  activeLink: string = 'dashboard';
+
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
@@ -32,10 +35,13 @@ export class NavbarComponent {
 
   goToProfile(): void {
     this.router.navigate(['/profile']);  
+    this.setActive('profile');
+    
   }
 
   goToDashboard():void {
     this.router.navigate(['/dashboard']);
+    this.setActive('dashboard');
   }
 
   goToDropDown():void {
@@ -43,6 +49,11 @@ export class NavbarComponent {
   }
   toggleDropdown(): void {
     this.dropdownOpen = !this.dropdownOpen;
+  }
+
+
+  setActive(link: string): void {
+    this.activeLink = link; 
   }
 
 }

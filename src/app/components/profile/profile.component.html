@@ -1,8 +1,14 @@
-
-<p>profile works!</p>
-<div class="comparaison">
-   @if (numb1 == numb2 && numb1 !== undefined && numb2 !== undefined){
-    <div class="bg-primary p3"> div2</div>}
-    <input type="number" [(ngModel)]="numb1"/>
-    <input type="number" [(ngModel)]="numb2"/>
-</div>
+<div class="profile-container">
+    <h2>Informations du compte</h2>
+    <div class="profile-box" *ngIf="currentUser">
+      <div class="profile-field">
+        <label for="username">Nom d'utilisateur :</label>
+        <input type="text" id="username" [value]="currentUser.name" disabled />
+      </div>
+      <div class="profile-field">
+        <label for="email">Email :</label>
+        <input type="email" id="email" [value]="currentUser.email" disabled />
+      </div>
+    </div>
+  </div>
+  
