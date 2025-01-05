@@ -18,10 +18,13 @@
     </li>-->
   </ul>
   <div class="navbar-right">
-    <button [ngClass]="{'active': activeLink === 'compte'}"  (click)="toggleDropdown()" (click)="setActive('compte')" class="dropdown-toggle">
+    <button [ngClass]="{'active': activeLink === 'compte'}"  (click)="toggleDropdown()" 
+    (click)="setActive('compte')" class="dropdown-toggle">
       <mat-icon>account_circle</mat-icon>
       <span>{{ currentUserName }}</span>
+      
     </button>
+
     <ul [ngClass]="{'dropdown-menu': true, 'show': dropdownOpen}">
       <li class="dropdown-item" (click)="goToProfile()">
         <mat-icon>person</mat-icon> Informations du compte

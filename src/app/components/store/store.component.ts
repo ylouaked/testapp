@@ -49,17 +49,17 @@ export class StoreComponent {
   this.filteredTransactions = this.transactions.filter(transaction => {
     const dateStr = transaction.date instanceof Date ? transaction.date.toISOString() : transaction.date;
       
-    return transaction.libelle.toLowerCase().startsWith(this.searchTerm.toLowerCase()) || 
-           transaction.montant.toString().startsWith(this.searchTerm) || 
-           transaction.id.toString().startsWith(this.searchTerm) || 
-           dateStr.startsWith(this.searchTerm);
+    return transaction.libelle.toLowerCase().includes(this.searchTerm.toLowerCase()) || 
+           transaction.montant.toString().includes(this.searchTerm) || 
+           transaction.id.toString().includes(this.searchTerm) || 
+           dateStr.includes(this.searchTerm);
   });
 }
 
   fetchTransactions(): void {
     this.storeService.getTransactions(this.storeId, this.p, this.itemsPerPage).subscribe(data => {
       this.transactions = data.transactions;
-      this.totalItems = data.totalItems; // Nombre total de transactions pour gérer la pagination
+      this.totalItems = data.totalItems; 
       this.filteredTransactions = [...this.transactions];
     });
   }

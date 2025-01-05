@@ -44,9 +44,7 @@ export class NavbarComponent {
     this.setActive('dashboard');
   }
 
-  goToDropDown():void {
-    this.dropdownOpen = !this.dropdownOpen;
-  }
+  
   toggleDropdown(): void {
     this.dropdownOpen = !this.dropdownOpen;
   }

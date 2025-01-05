@@ -3,6 +3,7 @@
     {
       "id": 1,
       "name": "Condor Alger",
+      "wilaya": "Alger",
       "transactions": [
         {
           "id": 1,
