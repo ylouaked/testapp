@@ -20,6 +20,35 @@
  
 }
 
+.user-menu
+{
+  display: flex;
+  gap: 4px;
+}
+
+.material-symbols-outlined{
+  color: white;
+}
+.sub-user-menu
+{
+  display: flex;
+  gap: 0px;
+  align-items: center;
+}
+.mat-mdc-menu-trigger user-menu button.active
+{
+  color: white;
+  border-bottom: 3px solid white;
+}
+
+::ng-deep .mat-mdc-menu-content
+{
+  background-color: white;
+}
+
+
+
+
 
 .navbar-left {
   list-style: none;

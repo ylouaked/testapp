@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { ProfileComponent } from '../profile/profile.component';
-import { DashboardComponent } from '../dashboard/dashboard.component';
 import { Router, RouterOutlet } from '@angular/router';
 import { User } from '../../user';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
+import { DecpopComponent } from '../decpop/decpop.component';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 @Component({
   selector: 'app-navbar',
-  imports: [RouterOutlet,CommonModule,MatIconModule,MatMenuModule],
+  imports: [RouterOutlet,CommonModule,MatIconModule,MatMenuModule,DecpopComponent,MatDialogModule,MatButtonModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
@@ -18,7 +19,7 @@ export class NavbarComponent {
   currentUserName: string | null = null;
   activeLink: string = 'dashboard';
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router,private dialog: MatDialog) {}
 
   ngOnInit(): void {
     const currentUser = this.authService.getCurrentUser() as User;
@@ -45,10 +46,19 @@ export class NavbarComponent {
   }
 
   
- 
 
   setActive(link: string): void {
     this.activeLink = link; 
   }
+
+
+
+deconnexion: boolean | undefined;
+  
+  openDialog():void {
+  this.dialog.open(DecpopComponent)  
+  }
+
+
 
 }
