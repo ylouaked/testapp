@@ -6,10 +6,10 @@ import { Router, RouterOutlet } from '@angular/router';
 import { User } from '../../user';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
-
+import {MatMenuModule} from '@angular/material/menu';
 @Component({
   selector: 'app-navbar',
-  imports: [RouterOutlet,CommonModule,MatIconModule],
+  imports: [RouterOutlet,CommonModule,MatIconModule,MatMenuModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
@@ -26,7 +26,7 @@ export class NavbarComponent {
   
 
   
-    dropdownOpen = false;
+    
 
     logout(): void {
       this.authService.logout();
@@ -45,10 +45,7 @@ export class NavbarComponent {
   }
 
   
-  toggleDropdown(): void {
-    this.dropdownOpen = !this.dropdownOpen;
-  }
-
+ 
 
   setActive(link: string): void {
     this.activeLink = link; 
