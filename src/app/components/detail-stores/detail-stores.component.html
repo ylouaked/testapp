@@ -1,0 +1,18 @@
+<div class="page-container">
+    <h2 class="title"> Magasins</h2>
+    <div class="map-container">
+      
+    </div>
+  
+    <div class="store-list">
+      
+  
+      <div *ngFor="let store of stores" class="store-card">
+        <h3>{{ store.name }}</h3>
+        <p><strong>Adresse:</strong> {{ store.adresse }}</p>
+        <p><strong>Wilaya:</strong> {{ store.wilaya }}</p>
+        <p><strong>Téléphone:</strong> {{ store.telephone }}</p>
+      </div>
+    </div>
+  </div>
+  

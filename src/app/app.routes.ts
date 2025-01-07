@@ -8,6 +8,7 @@ import { SingUpComponent } from './components/sign-up/sign-up.component';
 import { loginGuard } from './guards/login.guard';
 import { StoreComponent } from './components/store/store.component';
 import { TransactionComponent } from './components/transaction/transaction.component';
+import { DetailStoresComponent } from './components/detail-stores/detail-stores.component';
 
 export const routes: Routes = [
   {
@@ -50,6 +51,11 @@ export const routes: Routes = [
       {
         path: 'profile',     
         component: ProfileComponent,
+        canActivate: [authGuard],
+      },
+      {
+        path: 'stores',     
+        component: DetailStoresComponent,
         canActivate: [authGuard],
       }
     ]

@@ -10,7 +10,7 @@ import { DecpopComponent } from '../decpop/decpop.component';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 @Component({
   selector: 'app-navbar',
-  imports: [RouterOutlet,CommonModule,MatIconModule,MatMenuModule,DecpopComponent,MatDialogModule,MatButtonModule],
+  imports: [RouterOutlet,CommonModule,MatIconModule,MatMenuModule,MatDialogModule,MatButtonModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
@@ -43,6 +43,11 @@ export class NavbarComponent {
   goToDashboard():void {
     this.router.navigate(['/dashboard']);
     this.setActive('dashboard');
+  }
+
+  goToStores():void {
+    this.router.navigate(['/stores']);
+    this.setActive('stores');
   }
 
   

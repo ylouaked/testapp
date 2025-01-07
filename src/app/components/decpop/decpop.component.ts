@@ -7,7 +7,7 @@ import {MatButtonModule} from '@angular/material/button';
 
 @Component({
   selector: 'app-decpop',
-  imports: [RouterOutlet,CommonModule,MatDialogModule,MatButtonModule],
+  imports: [CommonModule,MatDialogModule,MatButtonModule],
   templateUrl: './decpop.component.html',
   styleUrl: './decpop.component.css'
 })
