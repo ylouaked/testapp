@@ -90,7 +90,8 @@
 
 
 .navbar-left a.active, 
-.navbar-right button.active {
+.navbar-right button.active 
+{
   color: white;
   border-bottom: 3px solid white;
 }
@@ -114,7 +115,7 @@
 
 
 .navbar-left a, 
-.navbar-right button, 
+.navbar-right button , 
 .navbar-logo img {
   min-width: 100px; 
   text-align: center;

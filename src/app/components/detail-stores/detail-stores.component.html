@@ -1,18 +1,36 @@
 <div class="page-container">
     <h2 class="title"> Magasins</h2>
+
+    <div class="content-container">
     <div class="map-container">
+        <google-map height="100%" width="100%" [options]="options">
+            <map-advanced-marker #markerElem="mapAdvancedMarker"
+            *ngFor="let store of stores; let index = index"
+            (mapClick)="onMarkerClick(markerElem, store)"
+
+            [position]="{ lat: store.latitude, lng: store.longitude }" />
+            <map-info-window #infoWindow>
+                <div>
+                  <strong>{{ selectedStore?.wilaya }}</strong><br />
+                  {{ selectedStore?.adresse }}
+                </div>
+              </map-info-window>
+        </google-map>
+        
       
     </div>
   
     <div class="store-list">
       
-  
-      <div *ngFor="let store of stores" class="store-card">
+      <div *ngFor="let store of stores" class="store-card" (click)="onStoreClick(store)">
         <h3>{{ store.name }}</h3>
         <p><strong>Adresse:</strong> {{ store.adresse }}</p>
         <p><strong>Wilaya:</strong> {{ store.wilaya }}</p>
         <p><strong>Téléphone:</strong> {{ store.telephone }}</p>
       </div>
     </div>
+    
+    </div>
+    
   </div>
   

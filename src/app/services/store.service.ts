@@ -23,9 +23,7 @@ export class StoreService {
     return this.http.get<Store>(`${this.apiUrl}/${storeId}`);
   }
 
-  getTransactionById(storeId: number, transactionId: number): Observable<Transaction> {
-  return this.http.get<Transaction>(`${this.apiUrl}/${storeId}/transactions/${transactionId}`);
-}
+  
 
 getTransactions(storeId: number, page: number, itemsPerPage: number):
  Observable<{ transactions: Transaction[], totalItems: number }> 
