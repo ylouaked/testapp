@@ -3,7 +3,7 @@
   <ul>
     @for( store of stores ; track store.id)
     {
-      <li  (click)="navigateToStore(store.id)">
+      <li  (click)="navigateToStore(store)">
         {{ store.name }}
       </li>
     }

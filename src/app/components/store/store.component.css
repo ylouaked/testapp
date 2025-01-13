@@ -3,7 +3,7 @@
   padding: 20px;
   height: 100%;
   margin: 0;
-  min-height: 100vh;
+  min-height: 100%;
 }
 .table-container {
     display: flex;
@@ -66,7 +66,14 @@
     text-decoration: underline;
   }
   
-.search-container {
+
+  .search-wrapper {
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    margin-bottom: 20px; /* Ajoute de l'espace entre la recherche et le tableau */
+  }
+  
+/*.search-container {
   display: flex;
   justify-content: center; 
   margin-bottom: 15px; 
@@ -88,4 +95,4 @@
   border-color: #007bff; 
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); 
 }
-
+*/

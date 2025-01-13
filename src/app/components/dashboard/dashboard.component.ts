@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '../../store';
 import { StoreService } from '../../services/store.service';
 import { Transaction } from '../../transaction';
-import { error } from 'console';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -17,34 +17,25 @@ import { error } from 'console';
 
 
 export class DashboardComponent implements OnInit {
-  currentUser: any | null = null;
-  transactions: Transaction[] = [];
-  userEmail: string = "";
-  StoreName: String = '';
-  stores: Store[] = [];
-  StoreId: number = 0 ;
+  
+ stores: Store[] = [];
+  
 
   constructor(private authService: AuthService, private router: Router, private storeService: StoreService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.currentUser = this.authService.getCurrentUser();
-
-
+    
     this.storeService.getAllStores().subscribe(
       (stores : Store[]) => {
         this.stores = stores;
         console.log('Stores:', this.stores);
       }
     );
-
-
   }
 
-  navigateToStore(storeId: number): void {
-    this.router.navigate(['/dashboard/store', storeId]);
+  navigateToStore(store:Store): void {    
+    this.router.navigate(['/dashboard/store',store.id]);
   }
-
-  
 
 
 }
@@ -52,40 +43,5 @@ export class DashboardComponent implements OnInit {
 
 
 
-
-
-
-/* stores : Store[]=[     {
-      "id":1,   
-      "name": "Condor Alger",
-      "transactions":[
-          {
-          "montant":50,
-          "label":"",
-
-          },
-          {
-            "montant":30,
-              "label":"",
-          }
-      ]
-      
-  } ,
-  {
-    "id":3,   
-    "name": "Condor safsafsaf ",
-    "transactions":[
-        {
-        "montant":50,
-        "label":"",
-
-        },
-        {
-          "montant":30,
-            "label":"",
-        }
-    ]
-
-}];*/
 
 

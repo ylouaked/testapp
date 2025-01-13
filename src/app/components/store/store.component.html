@@ -3,19 +3,9 @@
 @if(store)
 {
 <h2>Transactions pour le magasin  : {{store.name}}</h2>}
-
-<div class="search-container">
-  
-  <input 
-    class="search-bar"
-    type="text" 
-    [(ngModel)]="searchTerm" 
-    placeholder="Rechercher une transaction..." 
-    (input)="applySearch()" 
-  />
- 
+<div class="search-wrapper">
+  <app-search (searchChange)="applySearch($event)"></app-search>
 </div>
-
 
 <div class="table-container">
 <table class="custom-table">

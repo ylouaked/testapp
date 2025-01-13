@@ -28,7 +28,7 @@ constructor(private router: Router, private storeService: StoreService, private 
       this.transactionId = +this.route.snapshot.paramMap.get('transactionId')!;
       this.storeService.getstoreById(this.storeId).subscribe(store => {
         this.store = store;
-        this.transaction = store.transactions.find(t => t.id === this.transactionId);
+        this.transaction = store.transactions.find(t => t.id === this.transactionId);// pour chercher la transaction spécifique correspondant à transactionId
       });
     }
 

@@ -8,7 +8,9 @@ import { Transaction } from '../transaction';
   providedIn: 'root'
 })
 export class StoreService {
-  private apiUrl = 'http://localhost:3000/stores'
+  
+  private apiUrl = 'http://localhost:3000/stores';
+  private selectedStore?: Store;
 
   constructor(private http: HttpClient) { }
 
@@ -23,7 +25,7 @@ export class StoreService {
     return this.http.get<Store>(`${this.apiUrl}/${storeId}`);
   }
 
-  
+ 
 
 getTransactions(storeId: number, page: number, itemsPerPage: number):
  Observable<{ transactions: Transaction[], totalItems: number }> 
