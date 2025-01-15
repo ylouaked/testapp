@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class SearchComponent {
   searchTerm: string = '';
+  
 
   @Output() searchChange = new EventEmitter<string>();
 

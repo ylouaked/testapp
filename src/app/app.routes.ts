@@ -9,6 +9,7 @@ import { loginGuard } from './guards/login.guard';
 import { StoreComponent } from './components/store/store.component';
 import { TransactionComponent } from './components/transaction/transaction.component';
 import { DetailStoresComponent } from './components/detail-stores/detail-stores.component';
+import { PasswordComponent } from './components/password/password.component';
 
 export const routes: Routes = [
   {
@@ -57,7 +58,11 @@ export const routes: Routes = [
         path: 'stores',     
         component: DetailStoresComponent,
         canActivate: [authGuard],
-      }
+      },
+      { path: 'password', 
+        component: PasswordComponent,
+        canActivate: [authGuard], }
+
     ]
   },
 ];

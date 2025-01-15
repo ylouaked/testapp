@@ -50,6 +50,11 @@ export class NavbarComponent {
     this.setActive('stores');
   }
 
+  goToPassword():void {
+    this.router.navigate(['/password']);
+    this.setActive('password');
+  }
+
   
 
   setActive(link: string): void {

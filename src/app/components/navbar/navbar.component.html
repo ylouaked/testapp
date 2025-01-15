@@ -38,7 +38,7 @@
     <button mat-menu-item class="myMenuItem" (click)="goToProfile()">
       <mat-icon>person</mat-icon> Informations du compte
     </button>
-    <button mat-menu-item class="myMenuItem" (click)="goToProfile()">
+    <button routerLink="/password" (click)="goToPassword()" mat-menu-item class="myMenuItem">
       <mat-icon>password</mat-icon> Changer mot de passe
     </button>
     <button mat-menu-item mat-menu-item  class="myMenuItem" (click)="openDialog()"> <!-- (click)="openDialog()"-->
